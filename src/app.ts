@@ -5,7 +5,7 @@ import * as morgan from 'morgan';
 import * as bodyParser from 'body-parser';
 
 import initializeDb from './db';
-import * as config from './config.json';
+import config from './config';
 import api from './api';
 
 const app = express();
@@ -21,7 +21,7 @@ app.use(bodyParser.json({
 
 initializeDb( () => {
     app.use('/api', api());
-    server.listen(process.env.PORT || config.port);
+    server.listen(config.port);
 });
 
 export default app;
