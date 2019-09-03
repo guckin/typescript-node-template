@@ -1,28 +1,28 @@
 name: Node CI
-#
-#on:
-#  push:
-#    branches:
-#      - master uncomment these lines
-#      - release/*
-#
-#jobs:
-#  deploy:
-#
-#    runs-on: ubuntu-latest
-#
-#    steps:
-#      - uses: actions/checkout@v1
-#      - name: test
-#        uses: actions/setup-node@v1
-#        with:
-#          node-version: 12.x
-#      - name: npm install, build, and test
-#        run: |
-#          npm install
-#          npm test
-#        env:
-#          CI: true
+
+on:
+  push:
+    branches:
+      - master uncomment these lines
+      - release/*
+
+jobs:
+  deploy:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v1
+      - name: test
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12.x
+      - name: npm install, build, and test
+        run: |
+          npm install
+          npm test
+        env:
+          CI: true
 #      - name: authenticate
 #        uses: actions/gcloud/auth@master
 #        env:
