@@ -1,5 +1,5 @@
 describe('The Thing', () => {
     it('does something', () => {
-        expect(true).toEqual(true);
+        expect(true).toEqual(false);
     });
 });
