@@ -1,17 +1,18 @@
-FROM node:10
+FROM node:14
 
-WORKDIR /usr/src/app
+COPY package.json package-lock.json src/
 
-COPY package*.json ./
+WORKDIR ./src
 
-RUN npm install
+RUN npm ci --verbose
 
 COPY . .
 
-EXPOSE 8080
-
-ENV PORT=8080
-
 RUN npm run build
 
-CMD ["npm", "run", "start"]
+FROM build AS test
+
+# build arg used to invalidate cache so tests will run
+ARG TIMESTAMP
+
+RUN npm run test
